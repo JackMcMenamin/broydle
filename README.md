@@ -13,7 +13,7 @@ Open http://localhost:3000. `npm run build` writes a fully static site to `out/`
 
 ## Deploy
 
-Hosted on Vercel: import the GitHub repo, keep the defaults (framework Next.js), and every push to `main` deploys. The app is a static export, so it also works on any static host.
+Live at https://broydle.online. Hosted on Vercel: import the GitHub repo, keep the defaults (framework Next.js), and every push to `main` deploys. The app is a static export, so it also works on any static host.
 
 ## Structure
 
