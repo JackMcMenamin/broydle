@@ -92,7 +92,9 @@ export default function Hub({ date }: { date: string }) {
 
   return (
     <AppFrame top={top} scroll>
-      <div className="grid grid-cols-2 gap-5 pt-2">
+      {/* First screen: cards and share only. Everything below is off-screen until you scroll. */}
+      <div className="flex h-full flex-col justify-center gap-6">
+        <div className="grid grid-cols-2 gap-5">
         {d.tasks.map((t, i) => {
           const p = prog[i];
           return (
@@ -124,10 +126,13 @@ export default function Hub({ date }: { date: string }) {
             </motion.div>
           );
         })}
+        </div>
+        <div className="flex justify-center">
+          <CopyButton text={shareText} label="Share today's results" />
+        </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-6 pb-10 text-center">
-        <CopyButton text={shareText} label="Share today's results" />
+      <div className="mx-auto flex max-w-xl flex-col items-center gap-6 pb-10 pt-10 text-center">
         <section className="w-full rounded-2xl border border-faint p-6 text-left text-sm text-muted">
           <h2 className="mb-2 font-semibold text-ink">How it works</h2>
           <ul className="list-disc space-y-1 pl-5">

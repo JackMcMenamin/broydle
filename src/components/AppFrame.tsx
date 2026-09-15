@@ -31,7 +31,7 @@ export default function AppFrame({
         <div className={`mx-auto w-full ${w} px-6 py-3`}>{top}</div>
       </header>
       <main className={`min-h-0 flex-1 ${scroll ? "overflow-y-auto" : "overflow-hidden"}`}>
-        <div className={`mx-auto w-full ${w} px-6 py-4 ${scroll ? "min-h-full" : "h-full"}`}>{children}</div>
+        <div className={`mx-auto h-full w-full ${w} px-6 py-4`}>{children}</div>
       </main>
       {bottom && (
         <footer className="shrink-0 border-t border-faint">
