@@ -7,7 +7,7 @@ import { APP_NAME, accentFor, roman } from "@/core/base";
 import { taskSig } from "@/core/registry";
 import { DAYS, getDay } from "@/puzzles/days";
 import AppFrame from "./AppFrame";
-import { Badge, CopyButton, Hearts, Stars } from "./ui";
+import { Badge, CopyButton, Hearts, Stars, Wordmark } from "./ui";
 import { shareLine } from "./TaskShell";
 
 /** Demo days are labelled with dates counting from today. */
@@ -55,7 +55,9 @@ export default function Hub({ day }: { day: number }) {
 
   const top = (
     <div className="flex flex-col items-center gap-1">
-      <h1 className="text-3xl font-extrabold tracking-tight">{APP_NAME}</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight">
+        <Wordmark />
+      </h1>
       <div className="flex items-center gap-4">
         {day > 1 ? (
           <Link href={`/day/${day - 1}/`} className={nav}>

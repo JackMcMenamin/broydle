@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { MAX_HEARTS } from "@/lib/engine";
+import { ACCENTS, APP_NAME, APP_NAME_COLORS } from "@/core/base";
 
 const HEART_PATH =
   "M12 20.5c-.4 0-.8-.1-1.1-.4C6.6 16.4 3 13.2 3 9.3 3 6.6 5.1 4.5 7.8 4.5c1.6 0 3.1.8 4.2 2.1 1.1-1.3 2.6-2.1 4.2-2.1C18.9 4.5 21 6.6 21 9.3c0 3.9-3.6 7.1-7.9 10.8-.3.3-.7.4-1.1.4z";
@@ -146,5 +147,21 @@ export function TextInput(props: React.InputHTMLAttributes<HTMLInputElement>) {
       {...props}
       className={`w-full rounded-full border border-faint bg-raise px-4 py-2.5 text-lg outline-none focus:border-(--accent) ${props.className ?? ""}`}
     />
+  );
+}
+
+/** The app name with selected letters in the pastel accents. */
+export function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <span className={className} aria-label={APP_NAME}>
+      {APP_NAME.split("").map((ch, i) => {
+        const slot = APP_NAME_COLORS[i];
+        return (
+          <span key={i} style={slot === undefined ? undefined : { color: ACCENTS[slot] }}>
+            {ch}
+          </span>
+        );
+      })}
+    </span>
   );
 }

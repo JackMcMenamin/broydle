@@ -46,4 +46,6 @@ export const INK = "#ececec";
 export const ACCENTS = ["#F29BBB", "#A9CF86", "#F2C96A", "#8FBDE3"];
 /** Display name. One place to change when the real name is picked. */
 export const APP_NAME = "Broydle";
+/** Letter index -> accent slot for the wordmark: B pink, o green, d yellow, final e blue. */
+export const APP_NAME_COLORS: Record<number, number> = { 0: 0, 2: 1, 4: 2, 6: 3 };
 export const accentFor = (slot: number) => ACCENTS[(slot - 1) % ACCENTS.length];
