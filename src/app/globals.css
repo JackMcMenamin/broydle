@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
+/* Dark theme tokens. Swap these for a light theme later. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #121212; /* page background */
+  --ink: #ececec; /* primary text and borders */
+  --raise: #1c1c1c; /* raised surfaces, hover */
+  --faint: #383838; /* subtle borders, disabled */
+  --muted: #9a9a9a; /* secondary text */
+  --accent: #ececec; /* per-task accent, set inline */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-raise: var(--raise);
+  --color-faint: var(--faint);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-sans-custom);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans-custom), system-ui, sans-serif;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
 }
