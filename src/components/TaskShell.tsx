@@ -39,7 +39,7 @@ export default function TaskShell<S>({
   const [confirmReveal, setConfirmReveal] = useState(false);
   const { p, stars } = engine;
 
-  const banner = p.revealed ? "Revealed" : p.locked ? "Out of hearts" : p.done ? "Done" : null;
+  const banner = p.revealed ? "Revealed" : p.done ? "Done" : p.locked ? "Out of hearts, no more points" : null;
 
   const top = (
     <div className="flex items-center gap-4">
@@ -146,7 +146,7 @@ export default function TaskShell<S>({
                 <span className="font-semibold">Example:</span> {meta.example}
               </div>
               <p className="mt-3 text-xs text-muted">
-                3 hearts per task. Stars for progress; you keep them even if you run out of hearts.
+                3 hearts per task. Dots for progress. Out of hearts? Keep playing, you just stop earning dots.
               </p>
               {task.sources && <p className="mt-2 text-xs text-muted">{task.sources}</p>}
               <Btn primary className="mt-4 w-full" onClick={() => setHelp(false)}>

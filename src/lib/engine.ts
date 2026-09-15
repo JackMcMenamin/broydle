@@ -21,8 +21,9 @@ export interface Progress<S = unknown> {
   correct: number;
   /** Total units in the task. */
   total: number;
-  /** Task finished (all units resolved), locked, or revealed. */
+  /** Task finished (all units resolved) or revealed. */
   done: boolean;
+  /** Out of hearts: play continues but no more points are earned. */
   locked: boolean;
   revealed: boolean;
   /** Component-specific state. */
@@ -104,13 +105,12 @@ export function useTask<S>(day: string, slot: number, total: number, sig: string
     setP((prev) => ({ ...prev, state: updater(prev.state) }));
   }, []);
   const setCorrect = useCallback((n: number) => {
-    setP((prev) => ({ ...prev, correct: Math.max(prev.correct, n) }));
+    setP((prev) => (prev.locked ? prev : { ...prev, correct: Math.max(prev.correct, n) }));
   }, []);
   const wrong = useCallback(() => {
     setP((prev) => {
       const hearts = Math.max(0, prev.hearts - 1);
-      const locked = hearts === 0;
-      return { ...prev, hearts, locked, done: prev.done || locked };
+      return { ...prev, hearts, locked: hearts === 0 };
     });
   }, []);
   const finish = useCallback(() => setP((prev) => ({ ...prev, done: true })), []);

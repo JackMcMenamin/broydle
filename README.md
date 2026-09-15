@@ -41,7 +41,7 @@ Routes: `/` for today, `/day/YYYY-MM-DD/` for a day, `/day/YYYY-MM-DD/{slot}/` f
 | `pairup` | Pair Up | Drag a left tile onto its match, or click one then the other. |
 | `fillgap` | Fill the Gap | Type the missing member of a set. |
 
-Stars: 1 at a third of units correct, 2 at two thirds, 3 for all. Losing all hearts locks the task but keeps stars earned. Saved progress is stamped with a task signature, so changing content never loads stale state.
+Stars: 1 at a third of units correct, 2 at two thirds, 3 for all. Running out of hearts does not end the task: you keep playing but earn no more dots. Saved progress is stamped with a task signature, so changing content never loads stale state.
 
 ## Adding a game
 

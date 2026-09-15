@@ -137,8 +137,8 @@ export default function Hub({ date }: { date: string }) {
           <h2 className="mb-2 font-semibold text-ink">How it works</h2>
           <ul className="list-disc space-y-1 pl-5">
             <li>Four tasks a day, each a different type. Play the ones you like.</li>
-            <li>Every task starts with 3 hearts. A wrong answer costs a heart. Lose all 3 and the task locks.</li>
-            <li>Earn up to 3 dots per task for progress. You keep them even if you get locked out.</li>
+            <li>Every task starts with 3 hearts. A wrong answer costs a heart.</li>
+            <li>Earn up to 3 dots per task for progress. Out of hearts? Keep playing, you just stop earning dots.</li>
             <li>Progress saves in your browser. Leave and come back any time.</li>
             <li>Use Prev to replay earlier days.</li>
           </ul>

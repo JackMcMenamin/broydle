@@ -42,10 +42,10 @@ export function roman(n: number): string {
 /** Theme constants (dark). */
 export const PAPER = "#121212";
 export const INK = "#ececec";
-/** Pastel accent per task slot (1-4): pink, green, yellow, blue. */
-export const ACCENTS = ["#F29BBB", "#A9CF86", "#F2C96A", "#8FBDE3"];
+/** Pastel accent per task slot (1-4): purple, green, yellow, blue. */
+export const ACCENTS = ["#C3A3EA", "#A9CF86", "#F2C96A", "#8FBDE3"];
 /** Display name. One place to change when the real name is picked. */
 export const APP_NAME = "Broydle";
-/** Letter index -> accent slot for the wordmark: B pink, o green, d yellow, final e blue. */
+/** Letter index -> accent slot for the wordmark: B purple, o green, d yellow, final e blue. */
 export const APP_NAME_COLORS: Record<number, number> = { 0: 0, 2: 1, 4: 2, 6: 3 };
 export const accentFor = (slot: number) => ACCENTS[(slot - 1) % ACCENTS.length];
