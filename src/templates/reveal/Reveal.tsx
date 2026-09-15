@@ -32,7 +32,7 @@ function HintRow({ label, value, unlocked }: { label: string; value: string; unl
   );
 }
 
-export default function Reveal({ task, day, slot }: { task: RevealTask; day: number; slot: number }) {
+export default function Reveal({ task, day, slot }: { task: RevealTask; day: string; slot: number }) {
   const n = task.items.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), {
     current: 0,

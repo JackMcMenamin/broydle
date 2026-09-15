@@ -4,13 +4,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import type { Engine } from "@/lib/engine";
 import { accentFor, roman } from "@/core/base";
+import { formatKey } from "@/lib/dates";
 import type { Task } from "@/core/types";
 import { taskMeta } from "@/core/registry";
 import AppFrame from "./AppFrame";
 import { Badge, Btn, CopyButton, Hearts, Stars } from "./ui";
 
-export function shareLine(day: number, slot: number, task: Task, stars: number, hearts: number) {
-  return `Day ${day} · ${slot}. ${task.series} ${roman(task.edition)} · ${"★".repeat(stars)}${"☆".repeat(3 - stars)} ${"♥".repeat(hearts)}${"♡".repeat(3 - hearts)}`;
+export function shareLine(day: string, slot: number, task: Task, stars: number, hearts: number) {
+  return `${formatKey(day)} · ${slot}. ${task.series} ${roman(task.edition)} · ${"★".repeat(stars)}${"☆".repeat(3 - stars)} ${"♥".repeat(hearts)}${"♡".repeat(3 - hearts)}`;
 }
 
 export default function TaskShell<S>({
@@ -22,7 +23,7 @@ export default function TaskShell<S>({
   actions,
   wide,
 }: {
-  day: number;
+  day: string;
   slot: number;
   task: Task;
   engine: Engine<S>;

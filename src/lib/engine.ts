@@ -37,9 +37,9 @@ export function starsFor(correct: number, total: number): number {
   return 0;
 }
 
-export const storageKey = (day: number, slot: number) => `broydle:d${day}:s${slot}`;
+export const storageKey = (day: string, slot: number) => `broydle:${day}:s${slot}`;
 
-export function readProgress(day: number, slot: number, sig?: string): Progress | null {
+export function readProgress(day: string, slot: number, sig?: string): Progress | null {
   try {
     const raw = localStorage.getItem(storageKey(day, slot));
     if (!raw) return null;
@@ -63,7 +63,7 @@ export interface Engine<S> {
   reset: () => void;
 }
 
-export function useTask<S>(day: number, slot: number, total: number, sig: string, initialState: S): Engine<S> {
+export function useTask<S>(day: string, slot: number, total: number, sig: string, initialState: S): Engine<S> {
   const key = storageKey(day, slot);
   const fresh = useCallback(
     (): Progress<S> => ({

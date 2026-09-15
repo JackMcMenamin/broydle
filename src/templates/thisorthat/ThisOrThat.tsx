@@ -2,6 +2,7 @@
 import { AnimatePresence, motion, useMotionValue, useTransform, type PanInfo } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { seededShuffle } from "@/lib/answers";
+import { dateSeed } from "@/lib/dates";
 import { useTask } from "@/lib/engine";
 import { taskSig } from "@/core/registry";
 import { INK, PAPER, accentFor } from "@/core/base";
@@ -82,7 +83,7 @@ function Bin({
   );
 }
 
-export default function ThisOrThat({ task, day, slot }: { task: ThisOrThatTask; day: number; slot: number }) {
+export default function ThisOrThat({ task, day, slot }: { task: ThisOrThatTask; day: string; slot: number }) {
   const n = task.items.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), { picks: Array(n).fill(null) });
   const { p, setState, setCorrect, wrong, finish } = engine;
@@ -92,7 +93,7 @@ export default function ThisOrThat({ task, day, slot }: { task: ThisOrThatTask; 
     () =>
       seededShuffle(
         Array.from({ length: n }, (_, i) => i),
-        day * 31 + slot * 7 + n,
+        dateSeed(day) + slot * 7 + n,
       ),
     [n, day, slot],
   );

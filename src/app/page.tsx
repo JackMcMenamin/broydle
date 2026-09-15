@@ -1,5 +1,5 @@
-import Hub from "@/components/Hub";
+import TodayHub from "@/components/TodayHub";
 
 export default function Home() {
-  return <Hub day={1} />;
+  return <TodayHub />;
 }

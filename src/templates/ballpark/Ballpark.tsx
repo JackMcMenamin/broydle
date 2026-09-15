@@ -20,7 +20,7 @@ function fmt(v: number, q: BallparkQuestion) {
 
 const isHit = (g: number, q: BallparkQuestion) => Math.abs(g - q.answer) <= q.within;
 
-export default function Ballpark({ task, day, slot }: { task: BallparkTask; day: number; slot: number }) {
+export default function Ballpark({ task, day, slot }: { task: BallparkTask; day: string; slot: number }) {
   const n = task.questions.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), { round: 0, guesses: Array(n).fill(null) });
   const { p, setState, setCorrect, wrong, finish } = engine;

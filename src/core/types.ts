@@ -9,6 +9,7 @@ export type Task = RevealTask | PinDropTask | BallparkTask | ThisOrThatTask | Pa
 export type TaskType = Task["type"];
 
 export interface Day {
-  day: number;
+  /** Local calendar date, YYYY-MM-DD. */
+  date: string;
   tasks: [Task, Task, Task, Task];
 }

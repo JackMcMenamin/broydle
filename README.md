@@ -23,12 +23,12 @@ Live at https://broydle.online. Hosted on Vercel: import the GitHub repo, keep t
   - `content.ts` – the editions (actual puzzle content)
   - `<Template>.tsx` – the React component
   - `elements/` – sub-components used by the template (canvas, map, silhouette...)
-- `src/puzzles/days.ts` – the schedule: which editions appear on which day.
+- `src/puzzles/days.ts` – the schedule: which editions appear on which date (YYYY-MM-DD). The home page shows today's date in the player's local timezone; future dates are blocked until the day arrives; Prev walks back through the archive.
 - `src/core/` – shared types (`TaskBase`, the `Task` union) and the registry (`taskMeta`, `taskTotal`, `taskSig`).
 - `src/lib/engine.ts` – hearts, stars, locking, and localStorage persistence (`useTask`).
 - `src/components/` – `AppFrame` (fixed header / play area / action bar), `TaskShell` (per-task chrome), `Hub`, `TaskView`.
 
-Routes: `/day/{n}/` for a day, `/day/{n}/{slot}/` for a task (slot 1–4).
+Routes: `/` for today, `/day/YYYY-MM-DD/` for a day, `/day/YYYY-MM-DD/{slot}/` for a task (slot 1–4). Every scheduled date is prerendered at build time, so add days to the schedule and redeploy.
 
 ## Templates and the games built on them
 

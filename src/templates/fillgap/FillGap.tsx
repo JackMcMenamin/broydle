@@ -12,7 +12,7 @@ interface State {
   attempts: string[][];
 }
 
-export default function FillGap({ task, day, slot }: { task: FillGapTask; day: number; slot: number }) {
+export default function FillGap({ task, day, slot }: { task: FillGapTask; day: string; slot: number }) {
   const n = task.gaps.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), { solved: Array(n).fill(false), attempts: task.gaps.map(() => []) });
   const { p, setState, setCorrect, wrong, finish } = engine;

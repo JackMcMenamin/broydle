@@ -19,7 +19,7 @@ interface State {
   guesses: (Guess | null)[];
 }
 
-export default function PinDrop({ task, day, slot }: { task: PinDropTask; day: number; slot: number }) {
+export default function PinDrop({ task, day, slot }: { task: PinDropTask; day: string; slot: number }) {
   const n = task.places.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), { round: 0, guesses: Array(n).fill(null) });
   const { p, setState, setCorrect, wrong, finish } = engine;

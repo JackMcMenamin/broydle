@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useTask } from "@/lib/engine";
 import { taskSig } from "@/core/registry";
 import { seededShuffle } from "@/lib/answers";
+import { dateSeed } from "@/lib/dates";
 import TaskShell from "@/components/TaskShell";
 import type { PairUpTask } from "./types";
 
@@ -12,7 +13,7 @@ interface State {
   misses: [number, number][];
 }
 
-export default function PairUp({ task, day, slot }: { task: PairUpTask; day: number; slot: number }) {
+export default function PairUp({ task, day, slot }: { task: PairUpTask; day: string; slot: number }) {
   const n = task.pairs.length;
   const engine = useTask<State>(day, slot, n, taskSig(task), { matched: [], misses: [] });
   const { p, setState, setCorrect, wrong, finish } = engine;
@@ -26,7 +27,7 @@ export default function PairUp({ task, day, slot }: { task: PairUpTask; day: num
     () =>
       seededShuffle(
         Array.from({ length: n }, (_, i) => i),
-        day * 100 + slot * 7 + 3,
+        dateSeed(day) + slot * 7 + 3,
       ),
     [n, day, slot],
   );
